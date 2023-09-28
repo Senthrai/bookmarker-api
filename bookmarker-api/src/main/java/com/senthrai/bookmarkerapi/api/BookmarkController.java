@@ -21,4 +21,5 @@ public class BookmarkController {
     public BookmarksDTO getBookmarks(@RequestParam(name="page", defaultValue = "1") Integer page){
         return bookmarkService.getBookmarks(page);
     }
+
 }
