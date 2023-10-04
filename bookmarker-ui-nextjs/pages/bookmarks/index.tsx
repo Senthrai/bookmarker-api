@@ -4,22 +4,21 @@ import {fetchBookmarks} from "../../services/api";
 import Bookmarks from "../../components/Bookmarks";
 import SearchForm from "../../components/SearchForm";
 
-interface HomeProps{
-    bookmarks: BookmarksResponse,
-    query?: String
+interface HomeProps {
+    bookmarks: BookmarksResponse
+    query?: string
 }
-
-export default function Home(props) {
-    return (
-        <div>
-            <SearchForm/>
-            <Bookmarks bookmarks={props.bookmarks} query={props.query}/>
-        </div>
-    )
+const Home: NextPage<HomeProps> = (props) => {
+  return (
+    <div>
+        <SearchForm/>
+        <Bookmarks bookmarks={props.bookmarks} query={props.query}/>
+    </div>
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const {page = 1, query = ""} = context.query
+    const {page = 1, query = "" } = context.query
     const bookmarks = await fetchBookmarks(parseInt(String(page)), String(query))
     return {
         props: {
@@ -29,3 +28,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 }
 
+export default Home
