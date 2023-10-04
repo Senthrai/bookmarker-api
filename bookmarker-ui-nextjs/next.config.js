@@ -7,7 +7,7 @@ const nextConfig = {
   },
   publicRuntimeConfig:{
     API_BASE_URL: process.env.CLIENT_SIDE_API_BASE_URL
-  }
+  },
   async redirects() {
       return [
         {
